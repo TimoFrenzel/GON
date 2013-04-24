@@ -1,3 +1,6 @@
+<?php
+error_reporting(0);
+?>
 <!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN'>
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
@@ -20,7 +23,7 @@
 <body>
 <div id='galerie'>
 <div align='center'>
-	<FIELDSET style='width: 450px'>
+	<FIELDSET style='width: 650px'>
 		<LEGEND>
 			<STRONG>Galerie</STRONG>
 		</LEGEND>
@@ -30,7 +33,7 @@ require_once 'OsGalerie.php';
 
 $oGalerie = new OsGalerie();
 
-if(!$_GET['show']){
+if(!isset($_GET['show']) && empty($_GET['show'])){
 	$oGalerie->setMShowDebug(1);
 	$oGalerie->readOrder("./");
 	$oGalerie->setMImagePerSite(25);
@@ -40,7 +43,6 @@ if(!$_GET['show']){
 	echo $oGalerie->createOne();
 }
 ?>
-
 </fieldset>
 </div>
 </div>

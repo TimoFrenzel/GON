@@ -1,14 +1,16 @@
 <?php
+error_reporting(0);
 	$thumbnail = new OsThumbnailer();
 	$thumbnail->create($_GET['filename']);
-	if(!$_GET['width']){
+
+	if(!isset($_GET['width']) && empty($_GET['width'])){
 		$thumbnail->resize($thumbnail->getMProperSize());
 		$thumbnail->autocut(100,100,5);
 	}else{
 		$thumbnail->resize($_GET['width']);
 	}
+	
 	$thumbnail->output(true,true);
-
 
 
 class OsThumbnailer {
@@ -525,7 +527,8 @@ class OsThumbnailer {
 		if ($sendHeader) {
 			header("Content-type: image/jpeg");
 		}
-		ImageJPEG($this->getMNewImage(),"",$this->getMQuality());
+		ImageJPEG($this->getMNewImage(),null,$this->getMQuality());
+
 		if ($destroy) {
 			$this->destroy();
 		}
@@ -675,6 +678,4 @@ function autocut($newX = null,$newY = null,$pos = null)
                         return false;
                 }
         }
-	
 }
-?>

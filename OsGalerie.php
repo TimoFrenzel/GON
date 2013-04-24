@@ -1,4 +1,7 @@
 <?php
+
+error_reporting(0);
+
 class OsGalerie {
 	protected $mVersion			="v0.1";
 	protected $mTitle 			= "GON-Galerie";
@@ -10,7 +13,7 @@ class OsGalerie {
 	protected $mShowDebug 		= 0;
 	protected $mStartDate;
 	protected $mEndDate;
-	protected $mShortTitle		= "GON - System ohne Namen";
+	protected $mShortTitle		= "GON - Galerie ohne Namen";
 	protected $mSite;
 	protected $mAllowTypes		= array('.jpg');
 	protected $mPictureList;
@@ -282,7 +285,7 @@ class OsGalerie {
 							$i1+=$this->getMImagePerRow()){
 						$sGalerie.='<tr>'."\r\n";
 						for($i2=0;$i2<$this->getMImagePerRow();$i2++){
-							$sGalerie.='<td style="background-color:#fff;">';
+							$sGalerie.='<td style="background-color:#fff;width:100px;height:100px">';
 							if($x4[$i1+$i2])
 								$sGalerie.="<a href=\"".$_SERVER['PHP_SELF']."?filename=".$x4[$i1+$i2]."&amp;page=".$_GET['page']."&amp;show=1\">
 									<img border=\"0\" src=\"OsThumbnailer.php?filename=".$x4[$i1+$i2]."\" alt=\"\">\n
@@ -384,4 +387,3 @@ function IncArrayKeys($array)
 	    $this->mVersion = $mVersion;
 	}
 }
-?>
